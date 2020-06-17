@@ -1,0 +1,63 @@
+﻿@{
+    ViewData["Title"] = "Login/Register";
+}
+@model LoginWrapper
+
+<div class="text-center">
+    <div class="container">
+        <div class="row justify-content-between">
+            <div class="col-md-6">
+                <div class="col-sm">
+                    <form asp-action="Register" asp-controller="Home" method="post">
+                        <h3>Register a user</h3>
+                        <span asp-validation-for="NewUser.FirstName" class="text-danger"></span>
+                        <div class="form-group d-flex justify-content-between">
+                            <label asp-asp-for="NewUser.FirstName">First Name: </label>
+                            <input asp-for="NewUser.FirstName">
+                        </div>
+                        <span asp-validation-for="NewUser.LastName" class="text-danger"></span>
+                        <div class="form-group d-flex justify-content-between">
+                            <label asp-asp-for="NewUser.LastName">Last Name: </label>
+                            <input asp-for="NewUser.LastName">
+                        </div>
+                        <span asp-validation-for="NewUser.Email" class="text-danger"></span>
+                        <div class="form-group d-flex justify-content-between">
+                            <label asp-asp-for="NewUser.Email">Email: </label>
+                            <input asp-for="NewUser.Email">
+                        </div>
+                        <span asp-validation-for="NewUser.Password" class="text-danger"></span>
+                        <div class="form-group d-flex justify-content-between">
+                            <label asp-asp-for="NewUser.Password">Password: </label>
+                            <input asp-for="NewUser.Password">
+                        </div>
+                        <span asp-validation-for="NewUser.Confirm" class="text-danger"></span>
+                        <div class="form-group d-flex justify-content-between">
+                            <label asp-asp-for="NewUser.Confirm">Confirm Password: </label>
+                            <input asp-for="NewUser.Confirm">
+                        </div>
+                        <button class="btn btn-primary">Sign Up Now</button>
+                    </form>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="col-sm">
+                    <form asp-action="Login" asp-controller="Home" method="post">
+                        <h3>Log In</h3>
+                        <span asp-validation-for="LoginUser.Email" class="text-danger"></span>
+                        <div class="form-group d-flex justify-content-between">
+                            <label asp-asp-for="LoginUser.Email">Email: </label>
+                            <input asp-for="LoginUser.Email">
+                        </div>
+                        <span asp-validation-for="LoginUser.Password" class="text-danger"></span>
+                        <div class="form-group d-flex justify-content-between">
+                            <label asp-asp-for="LoginUser.Password">Password: </label>
+                            <input asp-for="LoginUser.Password">
+                        </div>
+                        <button class="btn btn-primary">Log In</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>

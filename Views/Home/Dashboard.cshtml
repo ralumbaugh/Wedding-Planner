@@ -1,0 +1,71 @@
+@{
+    ViewData["Title"] = "Dashboard";
+}
+@model WeddingWrapper
+
+<div class="container text-center">
+    <div class="row justify-content-between">
+        <h1>Welcome to the Wedding Planner</h1>
+        <h3><a href="/Logout">Log Out</a></h3>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scop="col">Wedding</th>
+                <th scop="col">Date</th>
+                <th scop="col">Guests</th>
+                <th scop="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(Wedding wedding in Model.AllWeddings)
+            {
+                <tr>
+                    <td><a href="individual/@wedding.WeddingId">@wedding.WedderOne & @wedding.WedderTwo</a></td>
+                    <td>@wedding.Date</td>
+                    <td>@wedding.Guests.Count</td>
+                    @* @if(@wedding.UserId == Model.CurrentUser.UserId)
+                    {
+                        <td><a href="/delete/@wedding.WeddingId">Delete this Wedding</a></td>
+                    }
+                    else *@
+                    @{
+                        bool Attending = false;
+                        @foreach(WeddingAttendees AttendedWedding in Model.CurrentUser.WeddingsAttending)
+                        {
+                            if(@AttendedWedding.Wedding.WeddingId == @wedding.WeddingId)
+                            {
+                                Attending = true;
+                            }
+                        }
+                        if(Attending == true)
+                        {
+                            @if(@wedding.UserId == Model.CurrentUser.UserId)
+                            {
+                                <td><a href="/cancel/@wedding.WeddingId">Cancel RSVP</a> | <a href="/delete/@wedding.WeddingId">Delete this Wedding</a></td>
+                            }
+                            else
+                            {
+                                <td><a href="/cancel/@wedding.WeddingId">Cancel RSVP</a></td>
+                            }
+                        }
+                        else
+                        {
+                            @if(@wedding.UserId == Model.CurrentUser.UserId)
+                            {
+                                <td><a href="/rsvp/@wedding.WeddingId">RSVP</a> | <a href="/delete/@wedding.WeddingId">Delete this Wedding</a></td>
+                            }
+                            else
+                            {
+                                <td><a href="/rsvp/@wedding.WeddingId">RSVP</a></td>
+                            }
+                        }
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>
+    <div class="justify-content-end">
+        <a href="/newwedding"><button type="submit" class="btn btn-primary">New Wedding</button></a>
+    </div>
+</div>

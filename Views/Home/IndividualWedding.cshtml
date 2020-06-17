@@ -1,0 +1,30 @@
+@model Wedding
+@{
+    ViewData["Title"] = "Individual Wedding";
+}
+
+<div class="container text-center">
+    <div class="row justify-content-between">
+        <h1>@Model.WedderOne and @Model.WedderTwo  Wedding</h1>
+        <h3><a href ="/dashboard">Dashboard</a>     <a href="/Logout">Log Out</a></h3>
+    </div>
+    <div class="row">
+        <h2>Date: @Model.Date</h2>
+    </div>
+    <div class="container">
+        <div class="row justify-content-between">
+            <div class="col-sm">
+                <p>Guests:</p>
+                <ul>
+                    @foreach(WeddingAttendees guest in Model.Guests)
+                    {
+                        <p>@guest.Guest.FirstName @guest.Guest.LastName</p>
+                    }
+                </ul>
+            </div>
+            <div class="col-med">
+                <p>I'm a map!</p>
+            </div>
+        </div>
+    </div>
+</div>
