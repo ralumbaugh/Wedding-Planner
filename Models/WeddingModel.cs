@@ -22,6 +22,19 @@ namespace WeddingPlanner.Models
     public List<WeddingAttendees> Guests {get; set;}
     public DateTime CreatedAt {get; set;} = DateTime.Now;
     public DateTime UpdatedAt {get; set;} = DateTime.Now;
+
+    public bool CheckForUser(List<WeddingAttendees> Guests, int CurrentID)
+    {
+        bool Present = false;
+        foreach(WeddingAttendees guest in Guests)
+        {
+            if(guest.UserId == CurrentID)
+            {
+                Present = true;
+            }
+        }
+        return Present;
+    }
     }
     
 }
